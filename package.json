@@ -4,21 +4,31 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "12.16.1",
+    "node": "12.14.1",
     "npm": "6.13.4"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js --ignore './client/'",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION = false npm install --prefix client && npm run build --prefix client"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
     "cookie-session": "^1.4.0",
+    "curl": "^0.1.4",
     "express": "^4.17.1",
-    "mongoose": "^5.9.4",
+    "jQuery": "^1.7.4",
+    "jsdom": "^16.2.1",
+    "mongoose": "^5.9.3",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "stripe": "^8.32.0"
   }
 }
