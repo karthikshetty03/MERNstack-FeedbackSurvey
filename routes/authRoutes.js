@@ -18,6 +18,7 @@ module.exports = app => {
   );
 
   app.get("/api/current_user", (req, res) => {
+    console.log(user);
     res.send(req.user);
   });
 
