@@ -12,6 +12,7 @@ module.exports = app => {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
+      res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
       res.redirect("/surveys");
     }
   );
