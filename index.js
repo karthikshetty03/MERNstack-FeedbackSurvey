@@ -6,6 +6,7 @@ const keys = require("./config/keys");
 const bodyParser = require("body-parser");
 require("./models/User");
 require("./services/passport");
+require("./models/Survey");
 
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
@@ -13,8 +14,6 @@ mongoose.connect(keys.mongoURI, {
 });
 
 const app = express();
-
-// STILL CONFUSED CODE ////////////
 
 app.use(bodyParser.json());
 
@@ -33,14 +32,12 @@ app.use(
   })
 );
 
-// TELL PASSPORT TO USE COOKIE TO HANDLE AUTHENTICATION
 app.use(passport.initialize());
 app.use(passport.session());
 
-/// STILL CONFUSED CODE //////////
-
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === "production") {
   //express will serve up production assets like main.js  or main.css file
