@@ -5,17 +5,12 @@ import SurveyField from "./SurveyField";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import validateEmails from "../../utils/validateEmails";
+import formFields from './formFields';
 
-const FIELDS = [
-  { label: "Survey Title", name: "title" },
-  { label: "Subject", name: "subject" },
-  { label: "Mail Body", name: "Body" },
-  { label: "Recipients List", name: "recipient" }
-];
 
 class SurveyForm extends React.Component {
   renderField() {
-    return _.map(FIELDS, ({ label, name }) => {
+    return _.map(formFields, ({ label, name }) => {
       return (
         <Field
           key={name}
@@ -50,7 +45,7 @@ function validate(values) {
 
   errors.recipient = validateEmails(values.recipient || " "); //split function cannot be on udefined is fixed due to this
 
-  _.each(FIELDS, ({ name }) => {
+  _.each(formFields, ({ name }) => {
     if (!values[name]) {
       errors[name] = `You must provide a ${name}`;
     }
@@ -61,5 +56,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: "SurveyForm"
+  form: "SurveyForm",
+  destroyOnUnmount : false
 })(SurveyForm);
