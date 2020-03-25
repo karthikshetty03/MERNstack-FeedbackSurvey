@@ -9,7 +9,7 @@ import { Link} from 'react-router-dom';
 const FIELDS = [
   { label: "Survey Title", name: "Title" },
   { label: "Subject", name: "subject" },
-  { label: "Email Body", name: "Body" },
+  { label: "Mail Body", name: "Body" },
   { label: "Recipients List", name: "Emails" }
 ];
 
