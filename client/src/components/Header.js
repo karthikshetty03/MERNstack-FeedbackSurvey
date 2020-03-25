@@ -16,10 +16,9 @@ class Header extends Component {
             <li key="1">
               <Payments />
             </li>
-            <li key="4"  style= {{margin : '0 5px', fontSize : '25px',color : 'black'}}>
-              Welcome, {this.props.auth.googleName || this.props.auth.name}
+            <li key="3" style={{ margin: "0 5px" }}>
+              Credits : {this.props.auth.credits}
             </li>
-            <li key="3" style= {{margin : '0 5px'}}>Credits : {this.props.auth.credits}</li>
             <li key="2">
               <a className="right" href="/api/logout">
                 Logout
