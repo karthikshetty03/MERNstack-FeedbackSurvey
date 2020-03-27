@@ -2,16 +2,22 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
-const keys = require("./config/keys");
 const bodyParser = require("body-parser");
+const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport");
 require("./models/Survey");
 
-mongoose.connect(keys.mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI);
+
+// mongoose.connect(keys.mongoURI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
 
 const app = express();
 

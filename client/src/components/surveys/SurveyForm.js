@@ -5,7 +5,7 @@ import SurveyField from "./SurveyField";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import validateEmails from "../../utils/validateEmails";
-import formFields from './formFields';
+import formFields from "./formFields";
 
 
 class SurveyForm extends React.Component {
@@ -26,7 +26,7 @@ class SurveyForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit) }>
+        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
           {this.renderField()}
           <Link to="/surveys" className="red btn-flat white-text">
             Cancel
@@ -43,7 +43,7 @@ class SurveyForm extends React.Component {
 function validate(values) {
   const errors = {};
 
-  errors.recipient = validateEmails(values.recipient || " "); //split function cannot be on udefined is fixed due to this
+  errors.recipients = validateEmails(values.recipients || " "); //split function cannot be on udefined is fixed due to this
 
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
@@ -57,5 +57,5 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: "SurveyForm",
-  destroyOnUnmount : false
+  destroyOnUnmount: false
 })(SurveyForm);
